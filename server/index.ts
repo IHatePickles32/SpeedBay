@@ -1,5 +1,6 @@
 import express from 'express';
 
+// Initialize Express app
 const app = express();
 const port = parseInt(process.env.PORT || '3000', 10);
 
