@@ -2,7 +2,7 @@ import express from 'express';
 
 // Initialize Express app
 const app = express();
-const port = parseInt(process.env.PORT || '3000', 10);
+const port = 3000;
 
 // Debug logging middleware
 app.use((req, res, next) => {
