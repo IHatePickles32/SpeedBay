@@ -9,6 +9,11 @@ const port = parseInt(process.env.PORT || '3000', 10);
 app.use(cors());
 app.use(express.json());
 
+// Health check endpoint
+app.get('/health', (req: Request, res: Response) => {
+  res.status(200).json({ status: 'healthy' });
+});
+
 // Welcome route
 app.get('/', (req: Request, res: Response) => {
   res.json({ message: 'Welcome to SpeedBay API' });
