@@ -4,12 +4,6 @@
   "description": "SpeedBay application",
   "private": true,
   "scripts": {
-    "install:all": "cd server && npm install",
-    "postinstall": "npm run install:all",
-    "build": "cd server && npm run build",
-    "start": "cd server && npm start"
-  },
-  "engines": {
-    "node": ">=18.0.0"
+    "start": "cd server && npm install && npm run build && npm start"
   }
 } 
