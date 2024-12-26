@@ -17,6 +17,10 @@ RUN npm install
 # Copy the entire project
 COPY . .
 
+# List contents to debug
+RUN ls -la
+RUN ls -la client
+
 # Install and build client
 WORKDIR /app/client
 RUN npm install
