@@ -1,6 +1,7 @@
 {
   "name": "speedbay",
   "version": "1.0.0",
+  "description": "SpeedBay application",
   "private": true,
   "scripts": {
     "install:all": "cd server && npm install",
