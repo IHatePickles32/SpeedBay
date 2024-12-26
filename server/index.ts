@@ -18,8 +18,9 @@ app.set('trust proxy', true);
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Parse JSON bodies
@@ -29,6 +30,7 @@ app.use(express.json());
 app.use((req: Request, res: Response, next: NextFunction) => {
   try {
     console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+    console.log('Client IP:', req.ip);
     console.log('Headers:', JSON.stringify(req.headers, null, 2));
     next();
   } catch (error) {
@@ -44,7 +46,8 @@ app.get('/', (req: Request, res: Response) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json({ 
       message: 'Server is running!',
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+      clientIP: req.ip
     });
   } catch (error) {
     console.error('Error in root route:', error);
@@ -59,6 +62,7 @@ app.get('/ping', (req: Request, res: Response) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json({ 
       pong: new Date().toISOString(),
+      clientIP: req.ip,
       headers: req.headers
     });
   } catch (error) {
@@ -81,7 +85,11 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
 
 let server: any;
 try {
-  server = app.listen(port, () => {
+  const options = {
+    ipv6Only: false
+  };
+
+  server = app.listen(port, "::", options, () => {
     const address = server.address() as AddressInfo;
     console.log(`Server is running on port ${address.port}`);
     console.log('Server address:', address);
