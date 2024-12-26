@@ -3,7 +3,7 @@ import authRoutes from './routes/auth';
 
 // Initialize Express app
 const app = express();
-const port = 3000;
+const port = parseInt(process.env.PORT || '3000', 10);
 
 // Parse JSON bodies
 app.use(express.json());
@@ -18,12 +18,20 @@ app.use((req, res, next) => {
   next();
 });
 
+// CORS middleware
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  if (req.method === 'OPTIONS') {
+    return res.sendStatus(200);
+  }
+  next();
+});
+
 // Basic route
 app.get('/', (req, res) => {
   console.log('Handling root request');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   res.json({ message: 'Server is running!' });
 });
 
@@ -31,7 +39,7 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoutes);
 
 // Start server
-const server = app.listen(port, () => {
+const server = app.listen(port, '0.0.0.0', () => {
   console.log(`Server is running on port ${port}`);
   console.log('Server environment:', {
     port,
