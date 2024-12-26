@@ -1,14 +1,13 @@
 {
-  "name": "ems-navigator",
+  "name": "speedbay",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "install:all": "cd client && npm install && cd ../server && npm install",
+    "install:all": "cd server && npm install",
     "postinstall": "npm run install:all",
-    "build:client": "cd client && npm run build",
     "build:server": "cd server && npm run build",
     "start:server": "cd server && npm start",
-    "build": "npm run build:client && npm run build:server",
+    "build": "npm run build:server",
     "start": "npm run start:server"
   }
 } 
