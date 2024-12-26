@@ -15,4 +15,12 @@ app.get('/', (req, res) => {
 // Start server
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
+});
+
+// Handle shutdown gracefully
+process.on('SIGTERM', () => {
+  console.log('SIGTERM received, shutting down gracefully');
+  server.close(() => {
+    console.log('Server closed');
+  });
 }); 
