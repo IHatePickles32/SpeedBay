@@ -2,15 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-=======
   "main": "dist/index.js",
   "scripts": {
     "dev": "npx ts-node-dev --respawn --transpile-only index.ts",
@@ -22,10 +13,11 @@
     "express": "^4.18.2",
     "@types/express": "^4.17.21",
     "@types/node": "^20.10.5",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "cors": "^2.8.5"
   },
   "devDependencies": {
-    "ts-node-dev": "^2.0.0"
+    "ts-node-dev": "^2.0.0",
+    "@types/cors": "^2.8.17"
   }
->>>>>>> 917b3411ef2a4d85bd434342b09872b0a1248b84
-} 
+}
