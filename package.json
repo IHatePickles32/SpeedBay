@@ -1,0 +1,9 @@
+{
+  "name": "speedbay",
+  "version": "1.0.0",
+  "description": "SpeedBay application",
+  "private": true,
+  "scripts": {
+    "start": "cd server && npm install && npm run build && npm start"
+  }
+} 
