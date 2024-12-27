@@ -1,15 +1,8 @@
 [build]
 builder = "nixpacks"
 buildCommand = "cd client && npm install && npm run build"
-watchPatterns = [
-  "client/**/*.{js,jsx,ts,tsx,json,css}"
-]
 
 [deploy]
 startCommand = "cd client && npx serve -s dist -l 8080"
 restartPolicyType = "ON_FAILURE"
-restartPolicyMaxRetries = 10
-
-[nixpacks.setup]
-nodeVersion = "20"
-installCommand = "cd client && npm install" 
+restartPolicyMaxRetries = 10 
