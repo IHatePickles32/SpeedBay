@@ -1,7 +1,9 @@
 import express from 'express';
+import path from 'path';
 import authRoutes from './routes/auth';
 
 // Initialize Express app
+// This server serves both the API and the React frontend
 const app = express();
 const port = parseInt(process.env.PORT || '3000', 10);
 
@@ -29,14 +31,17 @@ app.use((req, res, next) => {
   next();
 });
 
-// Basic route
-app.get('/', (req, res) => {
-  console.log('Handling root request');
-  res.json({ message: 'Server is running!' });
-});
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../../client/dist')));
 
 // Auth routes
 app.use('/api/auth', authRoutes);
+
+// The "catchall" handler: for any request that doesn't
+// match one above, send back React's index.html file.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+});
 
 // Start server
 const server = app.listen(port, '0.0.0.0', () => {

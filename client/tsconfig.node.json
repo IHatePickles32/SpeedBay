@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "composite": true,
+<<<<<<< HEAD
     "skipLibCheck": true,
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -8,3 +9,25 @@
   },
   "include": ["vite.config.ts"]
 }
+=======
+    "target": "ES2022",
+    "lib": ["ES2023"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+>>>>>>> 8af061e1f551ff1c92401f2bec1a5a59c6bb3f84

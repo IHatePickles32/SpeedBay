@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [build]
 builder = "nixpacks"
 buildCommand = "cd client && npm install && npm run build"
@@ -6,3 +7,9 @@ buildCommand = "cd client && npm install && npm run build"
 startCommand = "cd client && npx serve -s dist"
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
+=======
+[deploy]
+startCommand = "cd client && npm install && npm run build && npx serve -s dist -l 8080"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10 
+>>>>>>> 8af061e1f551ff1c92401f2bec1a5a59c6bb3f84
